@@ -2,10 +2,16 @@ version: '3.8'
 
 services:
   app:
-    build: .
-    container_name: typescript-node-app
-    environment:
-      - PORT=8080
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "8080:8080"
-    command: npm start
+    env_file:
+      - ./server/.env
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
