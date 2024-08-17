@@ -1,0 +1,1 @@
+export const validateOtp = (value) => value.replace(/[^0-9]/g, "");

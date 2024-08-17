@@ -1,0 +1,55 @@
+#container {
+  display: flex;
+  justify-content: space-between;
+  height: 100vh;
+  text-align: center;
+}
+
+#leftBox {
+  width: 50%;
+  overflow: hidden; /* Prevents overflow */
+  margin-left: -2px;
+}
+
+#leftBox > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the entire container */
+}
+
+#rightBox {
+  width: 50%;
+}
+
+#rightBox > img {
+  width: 13%;
+  margin-top: 15px;
+}
+
+#rightBox > img + p {
+  font-size: 17px;
+  font-weight: 500;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+form > div {
+  margin-bottom: 20px;
+}
+
+.common {
+  display: "flex";
+  gap: "10px";
+  justify-content: "center";
+  width: "67%";
+  border: "1px solid red";
+  margin: "20px auto";
+}
+@media all and (min-width: 360px) and (max-width: 768px) {
+  #leftBox {
+    display: none !important;
+  }
+  #rightBox {
+    width: 100%;
+  }
+}
