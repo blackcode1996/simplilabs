@@ -118,7 +118,7 @@ const Registration = () => {
     };
   
     try {
-      const data  = await axios.post("http://localhost:8080/api/auth/register", requestBody);
+      const data  = await axios.post("http://54.152.78.3:8080/api/auth/register", requestBody);
       if (data) {
         toast.success(data?.data?.message);
         setOtpSend(true);
@@ -142,7 +142,7 @@ const Registration = () => {
     };
   
     try {
-      const { data } = await axios.post("http://localhost:8080/api/auth/verify-otp", requestBody); // Ensure this is `http` if your server doesn't use SSL
+      const { data } = await axios.post("http://54.152.78.3:8080/api/auth/verify-otp", requestBody); // Ensure this is `http` if your server doesn't use SSL
       toast.success(data?.message); // Show success message
       setTimeout(() => {
         navigate("/home"); // Redirect to home page
@@ -165,7 +165,7 @@ const Registration = () => {
     };
   
     try {
-      const { data } = await axios.post("http://localhost:8080/api/auth/resend-otp", requestBody); // Ensure this is `http` if your server doesn't use SSL
+      const { data } = await axios.post("http://54.152.78.3:8080/api/auth/resend-otp", requestBody); // Ensure this is `http` if your server doesn't use SSL
       toast.success(data?.message); // Show success message if OTP was sent
       setOtpSend(true); // Set OTP send status to true
     } catch (error) {
