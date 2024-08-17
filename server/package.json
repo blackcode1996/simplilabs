@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "nodemon src/index.ts",
     "frontend": "cd ../client && npm install && npm run build",
-    "build": "rimraf dist && tsc",
+    "build": "rimraf dist && tsc && cp -R src/emailTemplates dist/emailTemplates",
     "serve": "node dist/index.js",
     "start": "node dist/index.js",
     "build-all": "npm run frontend && npm run build",
