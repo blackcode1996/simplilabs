@@ -37,7 +37,7 @@ FROM node:18-alpine
 WORKDIR /
 
 # Copy the built client assets and server code from previous stages
-COPY --from=client-build /client/build /client/build
+COPY --from=client-build /client/dist /client/dist
 COPY --from=server-build /server/dist /server/dist
 
 # Copy only the necessary files for the server
