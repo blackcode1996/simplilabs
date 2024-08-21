@@ -111,14 +111,21 @@ const Registration = () => {
     e.preventDefault();
     setLoading(true);
 
+    // const requestBody = {
+    //   name: registerData.name,
+    //   phone: `${registerData.countryCode}${registerData.mobileNo}`, 
+    //   email: registerData.email,
+    // };
+
     const requestBody = {
-      name: registerData.name,
-      phone: `${registerData.countryCode}${registerData.mobileNo}`, 
       email: registerData.email,
+      mobile: `${registerData.countryCode}${registerData.mobileNo}`,
+      name: registerData.name,
+      salutation: registerData.title
     };
   
     try {
-      const data  = await axios.post("http://54.152.78.3:8080/api/auth/register", requestBody);
+      const data  = await axios.post("https://colo-dev.infollion.com/api/v1/self-registration/register", requestBody);
       if (data) {
         toast.success(data?.data?.message);
         setOtpSend(true);
@@ -136,13 +143,19 @@ const Registration = () => {
     e.preventDefault();
     setLoading(true);
   
+    // const requestBody = {
+    //   email: registerData.email, // Use the email stored in the state
+    //   otp,  // OTP that the user entered
+    // };
+
     const requestBody = {
-      email: registerData.email, // Use the email stored in the state
-      otp,  // OTP that the user entered
+      action: "SelfRegister",
+      email: registerData.email, 
+      otp,  
     };
   
     try {
-      const { data } = await axios.post("http://54.152.78.3:8080/api/auth/verify-otp", requestBody); // Ensure this is `http` if your server doesn't use SSL
+      const { data } = await axios.post("https://colo-dev.infollion.com/api/v1/self-registration/verify-otp", requestBody); // Ensure this is `http` if your server doesn't use SSL
       toast.success(data?.message); // Show success message
       setTimeout(() => {
         navigate("/home"); // Redirect to home page
@@ -160,12 +173,19 @@ const Registration = () => {
     setTimer(180); // Reset the timer for OTP resend
     setResendDisabled(true); // Disable resend button until the timer expires
   
+    // const requestBody = {
+    //   email: registerData.email, // Use the email from state
+    // };
+
     const requestBody = {
-      email: registerData.email, // Use the email from state
+      email: registerData.email,
+      mobile: `${registerData.countryCode}${registerData.mobileNo}`,
+      name: registerData.name,
+      salutation: registerData.title
     };
   
     try {
-      const { data } = await axios.post("http://54.152.78.3:8080/api/auth/resend-otp", requestBody); // Ensure this is `http` if your server doesn't use SSL
+      const { data } = await axios.post("https://colo-dev.infollion.com/api/v1/self-registration/register", requestBody); // Ensure this is `http` if your server doesn't use SSL
       toast.success(data?.message); // Show success message if OTP was sent
       setOtpSend(true); // Set OTP send status to true
     } catch (error) {
